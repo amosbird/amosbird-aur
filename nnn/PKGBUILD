@@ -1,5 +1,5 @@
 pkgname=nnn-git
-pkgver=99999.2.8.r2.gc139178
+pkgver=2.8.r2.gc139178
 pkgrel=1
 pkgdesc="The fastest terminal file manager ever written."
 arch=(x86_64)

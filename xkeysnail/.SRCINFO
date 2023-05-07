@@ -1,6 +1,6 @@
 pkgbase = xkeysnail-git
 	pkgdesc = Yet another keyboard remapping tool for X environment.
-	pkgver = r51.g26ecdf8
+	pkgver = 1.r51.g26ecdf8
 	pkgrel = 1
 	url = https://github.com/amosbird/xkeysnail
 	arch = any

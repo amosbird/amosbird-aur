@@ -2,7 +2,7 @@
 
 pkgname=freerdp-git
 pkgdesc='Free RDP client - git checkout'
-pkgver=99999.2.0.0.r222
+pkgver=2.0.0.r222
 pkgrel=1
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP) - git checkout"
 arch=(x86_64)

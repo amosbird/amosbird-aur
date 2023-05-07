@@ -1,6 +1,6 @@
 pkgbase = llpp-git
 	pkgdesc = A graphical PDF viewer which aims to superficially resemble less(1).
-	pkgver = 99999.30.r64.g86a1984
+	pkgver = 30.r64.g86a1984
 	pkgrel = 1
 	url = https://github.com/amosbird/llpp.git
 	arch = i686

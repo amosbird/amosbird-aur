@@ -1,5 +1,5 @@
 pkgname=xkeysnail-git
-pkgver=r51.g26ecdf8
+pkgver=1.r51.g26ecdf8
 pkgrel=1
 pkgdesc="Yet another keyboard remapping tool for X environment."
 arch=('any')

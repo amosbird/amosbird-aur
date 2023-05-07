@@ -1,6 +1,6 @@
 pkgbase = xbanish-git
 	pkgdesc = Banish the mouse cursor when typing, show it again when the mouse moves.
-	pkgver = 99999.1.6.r8.gb70a13a
+	pkgver = 1.6.r8.gb70a13a
 	pkgrel = 1
 	url = https://github.com/amosbird/xbanish
 	arch = i686

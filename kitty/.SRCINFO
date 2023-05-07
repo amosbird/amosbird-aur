@@ -1,6 +1,6 @@
 pkgbase = kitty-git
 	pkgdesc = Modern, hackable, featureful, OpenGL based terminal emulator
-	pkgver = 99999.r12012
+	pkgver = 1.r12012
 	pkgrel = 1
 	epoch = 1
 	url = https://sw.kovidgoyal.net/kitty/

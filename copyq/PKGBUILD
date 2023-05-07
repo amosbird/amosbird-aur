@@ -1,5 +1,5 @@
 pkgname=copyq-git
-pkgver=r99999.4.1.0
+pkgver=4.1.0
 pkgrel=9
 epoch=1
 pkgdesc="Clipboard manager with searchable and editable history"
@@ -24,5 +24,5 @@ package() {
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "r99999.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "99999.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }

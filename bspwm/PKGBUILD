@@ -1,6 +1,6 @@
 _pkgname=bspwm
 pkgname=${_pkgname}-git
-pkgver=99999.0.9.10
+pkgver=0.9.10
 pkgrel=1
 pkgdesc='Tiling window manager based on binary space partitioning'
 arch=(x86_64)
