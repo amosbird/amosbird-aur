@@ -1,0 +1,17 @@
+pkgbase = xbanish-git
+	pkgdesc = Banish the mouse cursor when typing, show it again when the mouse moves.
+	pkgver = 99999.1.6.r8.gb70a13a
+	pkgrel = 1
+	url = https://github.com/amosbird/xbanish
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = libxfixes
+	depends = libxi
+	provides = xbanish
+	conflicts = xbanish
+	source = xbanish-git::git+https://github.com/amosbird/xbanish.git
+	md5sums = SKIP
+
+pkgname = xbanish-git

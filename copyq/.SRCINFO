@@ -1,0 +1,20 @@
+pkgbase = copyq-git
+	pkgdesc = Clipboard manager with searchable and editable history
+	pkgver = r99999.4.1.0
+	pkgrel = 9
+	epoch = 1
+	url = https://github.com/amosbird/copyq-git
+	arch = x86_64
+	license = GPL3
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	depends = hicolor-icon-theme
+	depends = qt5-svg
+	depends = qt5-wayland
+	depends = knotifications
+	provides = copyq=r99999.4.1.0-9
+	conflicts = copyq
+	source = copyq-git::git+https://github.com/amosbird/CopyQ.git
+	md5sums = SKIP
+
+pkgname = copyq-git

@@ -1,0 +1,19 @@
+pkgbase = bspwm-git
+	pkgdesc = Tiling window manager based on binary space partitioning
+	pkgver = 99999.0.9.10
+	pkgrel = 1
+	url = https://github.com/baskerville/bspwm
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = xcb-util
+	depends = xcb-util-wm
+	depends = xcb-util-keysyms
+	optdepends = sxhkd: to define keyboard and pointer bindings
+	optdepends = xdo: for the example panel
+	provides = bspwm=99999.0.9.10-1
+	conflicts = bspwm
+	source = bspwm-git::git+https://github.com/amosbird/bspwm.git
+	md5sums = SKIP
+
+pkgname = bspwm-git

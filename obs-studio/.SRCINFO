@@ -1,0 +1,40 @@
+pkgbase = obs-studio-git
+	pkgdesc = Free and open source software for video recording and live streaming.
+	pkgver = 99999.23.0.1.r1051.g2dba1953
+	pkgrel = 1
+	url = https://github.com/amosbird/obs-studio
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = libfdk-aac
+	makedepends = libxcomposite
+	makedepends = x264
+	makedepends = jack
+	makedepends = vlc
+	makedepends = swig
+	makedepends = luajit
+	makedepends = python
+	depends = ffmpeg
+	depends = jansson
+	depends = libxinerama
+	depends = libxkbcommon-x11
+	depends = qt5-x11extras
+	depends = curl
+	depends = gtk-update-icon-cache
+	optdepends = libfdk-aac: FDK AAC codec support
+	optdepends = libxcomposite: XComposite capture support
+	optdepends = jack: JACK Support
+	optdepends = vlc: VLC Media Source
+	optdepends = swig: Scripting
+	optdepends = luajit: Lua scripting
+	optdepends = python: Python scripting
+	provides = obs-studio=99999.23.0.1.r1051.g2dba1953
+	conflicts = obs-studio
+	source = obs-studio-git::git+https://github.com/amosbird/obs-studio.git#branch=master
+	source = git+https://github.com/Mixer/ftl-sdk.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = obs-studio-git
