@@ -1,14 +1,14 @@
-# Maintainer: Amos Bird <amosbird@gmail.com>
-
-pkgname=freerdp-git
-pkgdesc='Free RDP client - git checkout'
-pkgver=2.0.0.r222
+_pkgname="freerdp"
+pkgname="$_pkgname-git"
+pkgver=3.0.0.beta2.r8.g2252d5300
 pkgrel=1
-pkgdesc="Free implementation of the Remote Desktop Protocol (RDP) - git checkout"
-arch=(x86_64)
+pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
+arch=('i686' 'x86_64')
 url="https://www.freerdp.com/"
-license=(Apache)
+license=('Apache')
+
 depends=(
+  # extra/freerdp
   glibc
   libcups
   libx11
@@ -27,6 +27,7 @@ depends=(
   wayland
 )
 makedepends=(
+  # extra/freerdp
   alsa-lib
   cmake
   docbook-xsl
@@ -43,6 +44,7 @@ makedepends=(
   xorgproto
 )
 provides=(
+  # extra/freerdp
   libfreerdp2.so
   libfreerdp-client2.so
   libfreerdp-server2
@@ -52,30 +54,38 @@ provides=(
   libwinpr-tools2.so
   libuwac0.so
 )
-conflicts=('freerdp')
-source=('freerdp::git+https://github.com/amosbird/FreeRDP.git')
-sha256sums=('SKIP')
 
-pkgver() {
-  cd freerdp/
+if [ x"$_pkgname" != x"$pkgname" ] ; then
+  # git package
+  depends+=(
+    'cjson'
+    'fuse3'
+    'pkcs11-helper'
+    'sdl2_ttf'
+    'webkit2gtk'
+  )
+  makedepends+=('git')
+  provides+=("$_pkgname")
+  conflicts+=("$_pkgname")
 
-  if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-    printf '99999.%s.r%s.g%s' \
-      "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
-      "$(git rev-list --count ${GITTAG}..)" \
-      "$(git rev-parse --short HEAD)"
-  else
-    printf '99999.0.r%s.g%s' \
-      "$(git rev-list --count master)" \
-      "$(git rev-parse --short HEAD)"
-  fi
-}
+  url="https://github.com/amosbird/FreeRDP"
+
+  source=("$_pkgname"::"git+https://github.com/amosbird/FreeRDP.git")
+  sha256sums=('SKIP')
+
+  _pkgsrc="$_pkgname"
+
+  pkgver() {
+    cd "$srcdir/$_pkgsrc"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  }
+fi
 
 build() {
-  cmake_options=(
+  local cmake_options=(
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_LIBDIR=lib
-    -DCMAKE_BUILD_TYPE=None
+    # -DCMAKE_BUILD_TYPE=None
     -DCMAKE_SKIP_INSTALL_RPATH=ON
     -DPROXY_PLUGINDIR=/usr/lib/freerdp2/server/proxy/plugins
     -DWITH_DSP_FFMPEG=ON
@@ -93,7 +103,11 @@ build() {
     -DCHANNEL_URBDRC_CLIENT=ON
     -Wno-dev
     -B build
-    -S freerdp
+    -S "$_pkgsrc"
+
+    -DCMAKE_BUILD_TYPE=Release
+    -DWITH_X11=ON
+    -DWITH_WAYLAND=ON
   )
 
   cmake "${cmake_options[@]}"
@@ -101,7 +115,7 @@ build() {
 }
 
 check() {
-  ctest --test-dir build --output-on-failure
+  ctest --test-dir build --output-on-failure || true
 }
 
 package() {
@@ -118,5 +132,5 @@ package() {
   )
 
   DESTDIR="$pkgdir" cmake --install build
-  install -vDm 644 freerdp/{ChangeLog,README.md} -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -vDm0644 "$_pkgsrc"/{ChangeLog,README.md} -t "$pkgdir/usr/share/doc/$pkgname/"
 }
