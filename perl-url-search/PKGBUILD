@@ -7,8 +7,8 @@ pkgdesc="Perl/CPAN Module URL::Search"
 arch=("any")
 url="https://metacpan.org/pod/URL::Search"
 license=("GPL" "PerlArtistic")
-makedepends=("perl-test-pod")
-depends=("perl-test-pod")
+makedepends=("perl")
+depends=("perl")
 source=("https://cpan.metacpan.org/authors/id/M/MA/MAUKE/URL-Search-$pkgver.tar.gz")
 sha256sums=('97b4b308bd848d01540e5942b4cf0c342d2332e8c12c12ebf7abbc5968751f82')
 
