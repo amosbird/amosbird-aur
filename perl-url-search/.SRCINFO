@@ -6,8 +6,8 @@ pkgbase = perl-url-search
 	arch = any
 	license = GPL
 	license = PerlArtistic
-	makedepends = perl-test-pod
-	depends = perl-test-pod
+	makedepends = perl
+	depends = perl
 	source = https://cpan.metacpan.org/authors/id/M/MA/MAUKE/URL-Search-0.06.tar.gz
 	sha256sums = 97b4b308bd848d01540e5942b4cf0c342d2332e8c12c12ebf7abbc5968751f82
 
