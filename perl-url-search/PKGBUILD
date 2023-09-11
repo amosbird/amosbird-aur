@@ -1,0 +1,27 @@
+# Maintainer: Amos Bird <amosbird@gmail.com>
+
+pkgname=perl-url-search
+pkgver=0.06
+pkgrel=0
+pkgdesc="Perl/CPAN Module URL::Search"
+arch=("any")
+url="https://metacpan.org/pod/URL::Search"
+license=("GPL" "PerlArtistic")
+makedepends=("perl-test-pod")
+depends=("perl-test-pod")
+source=("https://cpan.metacpan.org/authors/id/M/MA/MAUKE/URL-Search-$pkgver.tar.gz")
+sha256sums=('97b4b308bd848d01540e5942b4cf0c342d2332e8c12c12ebf7abbc5968751f82')
+
+build() {
+  cd "$srcdir"/URL-Search-$pkgver
+  PERL_USE_UNSAFE_INC=1 \
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
+}
+
+package() {
+  cd "$srcdir"/URL-Search-$pkgver
+  make pure_install doc_install DESTDIR="$pkgdir"
+  find "$pkgdir" -name '.packlist' -delete
+  find "$pkgdir" -name '*.pod' -delete
+}

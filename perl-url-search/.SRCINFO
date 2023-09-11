@@ -1,0 +1,14 @@
+pkgbase = perl-url-search
+	pkgdesc = Perl/CPAN Module URL::Search
+	pkgver = 0.06
+	pkgrel = 0
+	url = https://metacpan.org/pod/URL::Search
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-test-pod
+	depends = perl-test-pod
+	source = https://cpan.metacpan.org/authors/id/M/MA/MAUKE/URL-Search-0.06.tar.gz
+	sha256sums = 97b4b308bd848d01540e5942b4cf0c342d2332e8c12c12ebf7abbc5968751f82
+
+pkgname = perl-url-search
