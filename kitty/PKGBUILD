@@ -15,7 +15,7 @@ depends=(python freetype2 fontconfig wayland libx11 libxi libgl libcanberra dbus
          libxkbcommon-x11 librsync python-pygments ncurses)
 makedepends=(git go python-setuptools libxinerama libxcursor libxrandr libxkbcommon mesa
              wayland-protocols python-sphinx python-sphinx-copybutton
-             python-sphinx-inline-tabs python-sphinxext-opengraph python-sphinx-furo)
+             python-sphinx-inline-tabs python-sphinxext-opengraph python-sphinx-furo simde)
 source=("git+https://github.com/amosbird/kitty.git")
 sha256sums=('SKIP')
 
