@@ -1,6 +1,6 @@
 pkgbase = freerdp-git
 	pkgdesc = Free implementation of the Remote Desktop Protocol (RDP)
-	pkgver = 3.12.0.r53.g11e980a
+	pkgver = 3.12.0.r71.gbb5a3a2
 	pkgrel = 1
 	url = https://github.com/amosbird/FreeRDP
 	arch = i686

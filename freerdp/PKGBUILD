@@ -11,7 +11,7 @@
 
 _pkgname="freerdp"
 pkgname="$_pkgname-git"
-pkgver=3.12.0.r53.g11e980a
+pkgver=3.12.0.r71.gbb5a3a2
 pkgrel=1
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 url="https://github.com/amosbird/FreeRDP"
@@ -116,15 +116,14 @@ build() {
     -DCHANNEL_RDPECAM_CLIENT=ON
     -DCHANNEL_URBDRC_CLIENT=ON
     -DPROXY_PLUGINDIR="/usr/lib/$_pkgname/server/proxy/plugins"
-    -DRDTK_FORCE_STATIC_BUILD=ON # prevent file conflicts with freerdp2
-    -DUWAC_FORCE_STATIC_BUILD=ON # prevent file conflicts with freerdp2
+    -DBUILD_SHARED_LIBS=ON
     -DWINPR_UTILS_IMAGE_JPEG=ON
     -DWINPR_UTILS_IMAGE_PNG=ON
     -DWINPR_UTILS_IMAGE_WEBP=ON
     -DWITH_ALSA=ON
-    -DWITH_BINARY_VERSIONING=ON # prevent file conflicts with freerdp2
     -DWITH_CHANNELS=ON
     -DWITH_CLIENT_CHANNELS=ON
+    -DCHANNEL_RDP2TCP=ON
     -DWITH_CUPS=ON
     -DWITH_DSP_FFMPEG=ON
     -DWITH_FFMPEG=ON
