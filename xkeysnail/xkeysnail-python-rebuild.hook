@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Upgrade
+Target = python
+
+[Action]
+Description = Rebuilding xkeysnail-git for new Python version...
+When = PostTransaction
+Exec = /usr/share/xkeysnail/rebuild.sh

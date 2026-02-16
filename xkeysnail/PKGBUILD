@@ -1,5 +1,6 @@
+# Maintainer: Kalle Lindqvist <kalle.lindqvist@mykolab.com>
 pkgname=xkeysnail-git
-pkgver=1.r51.g26ecdf8
+pkgver=99999.r108.g17a4332
 pkgrel=1
 pkgdesc="Yet another keyboard remapping tool for X environment."
 arch=('any')
@@ -9,12 +10,17 @@ depends=('python'
          'python-xlib'
          'python-evdev'
          'python-inotify-simple')
-makedepends=('python-setuptools'
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel'
              'git')
 provides=('xkeysnail')
 conflicts=('xkeysnail')
-source=("git+https://github.com/amosbird/xkeysnail.git")
-md5sums=("SKIP")
+source=("git+https://github.com/amosbird/xkeysnail.git"
+        "xkeysnail-python-rebuild.hook"
+        "rebuild.sh")
+md5sums=("SKIP" "SKIP" "SKIP")
 _gitname="xkeysnail"
 
 pkgver() {
@@ -22,7 +28,16 @@ pkgver() {
     echo 99999.$(git describe --long | sed 's/^HEAD-//;s/\([^-]*-g\)/r\1/;s/-/./g')
 }
 
+build() {
+    cd "$srcdir/$_gitname"
+    python -m build --wheel --no-isolation
+}
+
 package() {
     cd "$srcdir/$_gitname"
-    python setup.py install --root="$pkgdir/" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 "$srcdir/../xkeysnail-python-rebuild.hook" \
+        "$pkgdir/usr/share/libalpm/hooks/xkeysnail-python-rebuild.hook"
+    install -Dm755 "$srcdir/../rebuild.sh" \
+        "$pkgdir/usr/share/xkeysnail/rebuild.sh"
 }
