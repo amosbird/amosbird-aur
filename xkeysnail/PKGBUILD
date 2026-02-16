@@ -8,8 +8,7 @@ url="https://github.com/amosbird/xkeysnail"
 license=('GPL')
 depends=('python'
          'python-xlib'
-         'python-evdev'
-         'python-inotify-simple')
+         'python-evdev')
 makedepends=('python-build'
              'python-installer'
              'python-setuptools'
@@ -19,8 +18,9 @@ provides=('xkeysnail')
 conflicts=('xkeysnail')
 source=("git+https://github.com/amosbird/xkeysnail.git"
         "xkeysnail-python-rebuild.hook"
-        "rebuild.sh")
-md5sums=("SKIP" "SKIP" "SKIP")
+        "rebuild.sh"
+        "inotify_simple.py")
+md5sums=("SKIP" "SKIP" "SKIP" "6e0f49bd795a034a14fed45716b244a6")
 _gitname="xkeysnail"
 
 pkgver() {
@@ -30,6 +30,12 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_gitname"
+    # Vendor inotify_simple
+    cp "$srcdir/../inotify_simple.py" xkeysnail/
+    # Patch imports
+    sed -i 's/inotify_simple/xkeysnail.inotify_simple/' xkeysnail/input.py
+    sed -i 's/"inotify_simple",//' setup.py
+
     python -m build --wheel --no-isolation
 }
 
