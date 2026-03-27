@@ -22,7 +22,10 @@ options=(!buildflags)
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  printf "99999.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "99999.r%s.t%s.g%s" \
+    "$(git rev-list --count HEAD)" \
+    "$(git show -s --format=%ct HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 build() {

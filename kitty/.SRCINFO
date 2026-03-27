@@ -21,6 +21,7 @@ pkgbase = kitty-git
 	makedepends = python-sphinx-inline-tabs
 	makedepends = python-sphinxext-opengraph
 	makedepends = python-sphinx-furo
+	makedepends = simde
 	depends = python
 	depends = freetype2
 	depends = fontconfig
@@ -35,6 +36,7 @@ pkgbase = kitty-git
 	depends = librsync
 	depends = python-pygments
 	depends = ncurses
+	options = !buildflags
 	source = git+https://github.com/amosbird/kitty.git
 	sha256sums = SKIP
 
