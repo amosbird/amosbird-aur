@@ -1,14 +1,12 @@
 # Maintainer: Kalle Lindqvist <kalle.lindqvist@mykolab.com>
 pkgname=xkeysnail-git
-pkgver=99999.r108.g17a4332
+pkgver=99999.r109.t1743861732.g8f359b7
 pkgrel=1
 pkgdesc="Yet another keyboard remapping tool for X environment."
 arch=('any')
 url="https://github.com/amosbird/xkeysnail"
 license=('GPL')
-depends=('python'
-         'python-xlib'
-         'python-evdev')
+depends=('python')
 makedepends=('python-build'
              'python-installer'
              'python-setuptools'
@@ -16,34 +14,24 @@ makedepends=('python-build'
              'git')
 provides=('xkeysnail')
 conflicts=('xkeysnail')
-source=("git+https://github.com/amosbird/xkeysnail.git"
-        "xkeysnail-python-rebuild.hook"
-        "rebuild.sh"
-        "inotify_simple.py")
-md5sums=("SKIP" "SKIP" "SKIP" "6e0f49bd795a034a14fed45716b244a6")
+source=("git+https://github.com/amosbird/xkeysnail.git")
+md5sums=("SKIP")
 _gitname="xkeysnail"
 
 pkgver() {
     cd "$srcdir/$_gitname"
-    echo 99999.$(git describe --long | sed 's/^HEAD-//;s/\([^-]*-g\)/r\1/;s/-/./g')
+    printf "99999.r%s.t%s.g%s" \
+        "$(git rev-list --count HEAD)" \
+        "$(git show -s --format=%ct HEAD)" \
+        "$(git rev-parse --short HEAD)"
 }
 
 build() {
     cd "$srcdir/$_gitname"
-    # Vendor inotify_simple
-    cp "$srcdir/../inotify_simple.py" xkeysnail/
-    # Patch imports
-    sed -i 's/inotify_simple/xkeysnail.inotify_simple/' xkeysnail/input.py
-    sed -i 's/"inotify_simple",//' setup.py
-
     python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$_gitname"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 "$srcdir/../xkeysnail-python-rebuild.hook" \
-        "$pkgdir/usr/share/libalpm/hooks/xkeysnail-python-rebuild.hook"
-    install -Dm755 "$srcdir/../rebuild.sh" \
-        "$pkgdir/usr/share/xkeysnail/rebuild.sh"
 }
