@@ -11,7 +11,7 @@
 
 _pkgname="freerdp"
 pkgname="$_pkgname-git"
-pkgver=3.12.0.r71.gbb5a3a2
+pkgver=3.12.0.r901.gda6eae7
 pkgrel=1
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 url="https://github.com/amosbird/FreeRDP"
@@ -160,7 +160,9 @@ package() {
   depends+=(
     alsa-lib libasound.so
     e2fsprogs libcom_err.so
-    ffmpeg libavcodec.so libavutil.so libswresample.so libswscale.so
+    # shortcut: depend on ffmpeg without SONAME pins so repository ABI upgrades can
+    # complete; scripts/update immediately rebuilds this local VCS package afterward
+    ffmpeg
     icu libicuuc.so
     json-c libjson-c.so
     krb5 libk5crypto.so libkrb5.so
