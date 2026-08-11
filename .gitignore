@@ -1,0 +1,7 @@
+# makepkg build output
+**/src/
+**/pkg/
+**/*.pkg.tar*
+
+# VCS source cache named after the freerdp source entry
+/freerdp/freerdp/
