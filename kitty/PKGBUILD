@@ -51,7 +51,4 @@ package_kitty-git() {
 
   mkdir -p "$pkgdir/usr/share/terminfo"
   tic -x -o "$pkgdir/usr/share/terminfo" terminfo/kitty.terminfo
-
-  mkdir -p "$pkgdir/usr/lib/kitty/"
-  cp -r "shell-integration" "$pkgdir/usr/lib/kitty/"
 }
